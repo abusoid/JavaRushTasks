@@ -1,5 +1,6 @@
 package com.javarush.task.task14.task1419;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,14 +12,16 @@ public class Solution {
     public static List<Exception> exceptions = new ArrayList<>();
 
     public static void main(String[] args) {
-        /*initExceptions();
+        initExceptions();
 
         for (Exception exception : exceptions) {
             System.out.println(exception);
 
-        }*/
-        System.out.println((3 * 0.6 - 2 * (-0.24))/(2 * 0.6 + 3 * (-0.24)));
+        }
+
     }
+
+
 
     private static void initExceptions() {   //it's first exception
         try {
@@ -35,22 +38,87 @@ public class Solution {
             exceptions.add(e);
         }
 
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         try {
-            int i = 1;
-            int b = i / 0;
-        } catch (ArithmeticException e) {
-        exceptions.add(e);
+            reader.close();
+        } catch (Exception e) {
+            exceptions.add(e);
+        }
+
+        try {
+            String s = null;
+            s = reader.readLine();
+        } catch (Exception e) {
+            exceptions.add(e);
+        }
+
+        try
+        {
+            int[] ints = new int[0];
+            System.out.println(ints[1]);
+        } catch (ArrayIndexOutOfBoundsException e)
+        {
+            exceptions.add(e);
+        }
+
+        try
+        {
+            Integer integer = (Integer)(new Object());
+        } catch (ClassCastException e)
+        {
+            exceptions.add(e);
+        }
+
+        try
+        {
+            int[] ints = new int[-1];
+        } catch (NegativeArraySizeException e)
+        {
+            exceptions.add(e);
+        }
+
+        try
+        {
+            String s = null;
+            s.length();
+        } catch (NullPointerException e)
+        {
+            exceptions.add(e);
+        }
+
+        try
+        {
+            System.out.println(Integer.parseInt("null"));
+        } catch (NumberFormatException e)
+        {
+            exceptions.add(e);
+        }
+
+        try
+        {
+            Class<?> aClass = Class.forName("");
+        } catch (ClassNotFoundException e)
+        {
+            exceptions.add(e);
+        }
+
+
+        try
+        {
+            FileInputStream fl = new FileInputStream("C:\\TEST.txt");
+        } catch (FileNotFoundException e)
+        {
+            exceptions.add(e);
         }
 
 
 
 
 
+            //напишите тут ваш код
 
-
-
-
-        //напишите тут ваш код
 
     }
+
 }

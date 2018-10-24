@@ -28,20 +28,28 @@ public class Solution {
         Date stopPlaying();
     }
 
-    public static class Violin {
+    public static class Violin implements MusicalInstrument{
         private String owner;
+
+        @Override
+        public void run() {
+            long a = startPlaying().getTime();
+            sleepNSeconds(1);
+            long b = stopPlaying().getTime();
+            System.out.println("Playing " + (b - a) + " ms");
+        }
 
         public Violin(String owner) {
             this.owner = owner;
         }
 
         public Date startPlaying() {
-            System.out.println(this.owner + " starts playing");
+            System.out.println(this.owner + " is starting to play");
             return new Date();
         }
 
         public Date stopPlaying() {
-            System.out.println(this.owner + " stops playing");
+            System.out.println(this.owner + " is stopping playing");
             return new Date();
         }
     }
